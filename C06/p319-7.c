@@ -17,7 +17,7 @@ int is_prime(int n)
 		{
 			prime++;
 			printf("%3d ", a);
-			// 소수를 10개 출력할 때마다 줄 바꿈
+			// 소수를 15개 출력할 때마다 줄 바꿈
 			if (prime != 0 && prime % 15 == 0)
 				printf("\n");
 		}
