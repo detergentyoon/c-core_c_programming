@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include <stdlib.h> // rand 함수
+#include <time.h> // time 함수
 
 int random(int add)
 {

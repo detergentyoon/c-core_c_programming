@@ -18,6 +18,7 @@ int get_blue(int color)
 
 int make_rgb(int r, int g, int b)
 {
+    // 마이너스 연산을 통해 보색을 구하고, 비트 시프트 연산을 통해 본래 자리로 보냄
 	r = 0xFF - r << 16;
 	g = 0xFF - g << 8;
 	b = 0xFF - b;
