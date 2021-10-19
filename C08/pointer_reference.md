@@ -2,10 +2,10 @@
 **포인터(pointer)는 주소(address)를 저장하는 변수**로, 예를 들어 char형 변수에 저장된 값은 문자 코드이고, int형 변수에 저장된 값은 정수이다. 마찬가지로 포인터 변수에 저장된 값은 주소이다.
 
 32bit 플랫폼에서는 32bit(4byte)의 주소 크기를 가진다.
->0x00000000 ~ 0xffffffff 번지
++ 0x00000000 ~ 0xffffffff 번지
 
 64bit 플랫폼에서는 64bit(8byte)의 주소 크기를 가진다.
->0x0000000000000000 ~ 0xffffffffffffffff
++ 0x0000000000000000 ~ 0xffffffffffffffff
 
 포인터는 주소를 이용해서 다른 변수에 접근할 수 있는, 즉 **다른 변수를 가리키는 변수**이다.
 
@@ -15,7 +15,7 @@
 <br>
 
 # 포인터의 선언 및 초기화
-## 포인터의 선언 형식
+>## 포인터의 선언 형식
 `data_type *vari_name`  
 `data_type *vari_name = init_value`  
 \* 기호는 포인터 수식어로, 다음으로 오는 변수를 포인터로 형변환시킨다. 포인터 변수는 간단히 포인터라고 칭한다.
@@ -31,7 +31,7 @@ char *pc = NULL;
 ```
 **포인터를 선언할 때 지정하는 데이터형은 포인터가 가리키는 변수의 데이터형**이다. 포인터 수식어 `*`는 데이터형 쪽에 붙여 써도 되고 변수 쪽으로 붙여 써도 되지만 통상적으로 변수쪽에 붙여 써 주는 것이 직관적인 구분이 가능하게 한다. (Visual Studio 2019 에서는 포인터 코드 작성시 자동으로 데이터형 쪽에 `*`가 붙음)
 
-### why?
+>>### why?
 포인터를 한 줄에 여러 개 선언하는 경우
 ```c
 int *p1, *p2, *p3; // p1, p2, p3는 모두 포인터
@@ -49,7 +49,7 @@ printf("%d byte", sizeof(int*)); // 64bit 플랫폼 기준 int 포인터 크기
 ```
 <br>
 
-## 포인터의 초기화
+>## 포인터의 초기화
 포인터에 값을 초기화할 때는 **주소 구하기(address-of) 연산자**인 `&`를 사용하여 변수 a의 주소 값을 포인터 변수 p에 할당하여 포인터로 하여금 변수 a의 값에 직접적으로 개입할 수 있게 한다. 
 ```c
 int a = 10;
@@ -108,3 +108,53 @@ int main()
 }
 ```
 test 함수의 매개변수 p는 main 함수 내의 a를 가리킨다. 따라서 포인터 p로 main의 a값을 끌어와서(역참조) 사용할 수  있다.
+
+<br>
+
+---
+<br>
+
+# 함수와 포인터
+>## 값에 의한 전달(passing by value)
+```c
+double get_area(double radius)
+{
+    const double PI = 3.14159265359;
+    return PI * radius * radius;
+}
+
+int main()
+{
+    double result = get_area(2.5);
+    // 2.5를 매개변수 radius에 복사하여 전달
+    printf("%f", result);
+}
+```
+<br>
+
+>## 포인터에 의한 전달(passing by pointer)
+```c
+void swap(int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main()
+{
+    int a = 5;
+    int b = 3;
+
+    swap(&a, &b);
+    printf("a = %d\nb = %d", a, b);
+}
+```
+<br>
+
+>## 배열의 전달
+```c
+void print_arr(int arr[], int size);
+// ==
+void printf_arr(int *arr, int size);
+```
