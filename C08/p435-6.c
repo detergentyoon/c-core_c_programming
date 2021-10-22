@@ -19,19 +19,17 @@ void get_min_max(int* arr, int* max, int* min)
 int main()
 {
 	int arr[10] = { 23, 45, 62, 12, 99, 83, 23, 50, 72, 37 };
-	int* p = &arr[0];
 	int max = arr[0];
 	int min = arr[0];
 
 	printf("배열: ");
 	for (int i = 0; i < 10; i++)
-		printf("%d ", *(p + i)); // *(p + i) == arr[i]
-	printf("\n");
+		printf("%d ", arr[i]);
 
-	get_min_max(p, &max, &min); // max와 min의 주소 값을 매개변수로 전달하여 다른 함수에서도 main 함수 내의 변수 값 자체에 개입할 수 있도록 함  
+	get_min_max(arr, &max, &min); // max와 min의 주소 값을 매개변수로 전달하여 다른 함수에서도 main 함수 내의 변수 값 자체에 개입할 수 있도록 함  
 
-	printf("최대값: %d\n", max); // get_min_max 함수에서 연산한 결과를 포인터를 통해 받아옴
-	printf("최소값: %d", min);
+	printf("\n최대값: %d", max); // get_min_max 함수에서 연산한 결과를 포인터를 통해 받아옴
+	printf("\n최소값: %d", min);
 
 	return 0;
 }
