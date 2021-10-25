@@ -9,6 +9,7 @@ int main()
 
 	printf("문자열: ");
 	scanf_s("%[^\n]", str, sizeof(str)); // \n을 제외한 문자만 받음
+	// 혹은 gets_s(str, sizeof(str));
 
 	int n = strlen(str);
 
