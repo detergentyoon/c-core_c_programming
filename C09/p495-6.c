@@ -26,8 +26,9 @@ void check_time_str(char* time)
 	if (time[0] == '2' && time[1] == '4') 
 		// if time over 24:00:00 false
 		if (time[2] != '0' || time[3] != '0' || time[4] != '0' || time[5] != '0')
-			t++;
-	if (t != 3) 
+			t++; // t++ 의 경우 조건문의 허점을 이용한 '240s00' 입력 시 유효한 시간으로 처리됨.
+				 // 따라서 이를 보완한 t-- 로 설계한 6_other 코드가 더 범용성이 높음
+	if (t != 3)
 		printf("잘못 입력했습니다. hhmmss형식으로 입력하세요.\n");
 	else
 		printf("%s는 유효한 시간입니다.\n", time);
