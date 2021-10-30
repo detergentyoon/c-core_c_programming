@@ -1,27 +1,24 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include<stdio.h>
-#include<string.h> // strcat()
-#define MAX 256
+#include <stdio.h>
+#include <string.h> // strcat
+#define SIZE 256
 
 int main()
 {
-	char name[MAX] = "";
-	char extn[MAX] = "";
-	char dot[2] = ".";
+	char filename[SIZE];
+	char extn[SIZE];
+	char dot[2] = "."; // strcat 매개변수는 문자열만 받기 때문에 dot을 문자열로 정의
 
 	printf("파일명: ");
-	scanf_s("%[^\n]s", name, sizeof(name));
-
-	getchar(); // 버퍼를 비움
+	gets_s(filename, sizeof(filename));
 
 	printf("확장자: ");
-	scanf_s("%[^\n]s", extn, sizeof(extn));
+	gets_s(extn, sizeof(extn));
 
-	// 문자열을 하나로 병합
-	strcat(name, dot);
-	strcat(name, extn);
+	strcat(filename, dot);
+	strcat(filename, extn);
 
-	printf("전체 파일명: %s", name);
+	printf("전체 파일명: %s", filename);
 
 	return 0;
 }
